@@ -1,0 +1,23 @@
+schema = 1
+id = "jj-diff"
+name = "jj diff"
+version = "0.1.0"
+description = "Reads `jj diff --git` and `jj show --git` as summary badges and one collapsible diff per file."
+host = "host.luau"
+
+# Plain `jj diff` is claimed too, but only parses when ui.diff-formatter is
+# git-style (`:git`, or `--git` typed). With a formatter like difft no file
+# header is found, `view` returns nil and the raw output shows. No `jj log` or
+# `jj st`: a claim here would replace their built-in lenses.
+[[lenses]]
+id = "diff"
+match = [
+	"jj diff",
+	"jj diff *",
+	"jj show",
+	"jj show *",
+	"jj --no-pager diff",
+	"jj --no-pager diff *",
+	"jj --no-pager show",
+	"jj --no-pager show *",
+]
